@@ -1,4 +1,4 @@
-from classes.usuario import Usuario
+from usuario import Usuario
 
 class Cliente(Usuario):
     def __init__(self, name, surname, password, rg, id:str, phone_number:str, gender:str):
