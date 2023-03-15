@@ -1,0 +1,2 @@
+class Caderneta:
+    pass
