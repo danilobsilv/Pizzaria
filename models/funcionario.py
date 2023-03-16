@@ -1,11 +1,11 @@
-from usuario import Usuario
+from models.usuario import Usuario
 from datetime import date
+from random import randint
 
-class Funcionario(Usuario):
-    
-    def __init__(self, name, surname, password, rg, id:str, salary:float, hiring_date:date):
-        super().__init__(name, surname, password, rg)
-        self.id = id
+class Funcionario(Usuario): #id, salary, float, hiring_date
+    def __init__(self, name: str, password: str, rg: str, salary:float, hiring_date:date):
+        super().__init__(name, password, rg)
+        self.id = randint(100,999)
         self.salary = salary
         self.hiring_date = hiring_date
 
@@ -26,9 +26,3 @@ class Funcionario(Usuario):
     
     def checkFuncionario(self):  # esse método vai validar se um funcionário existe ou não, irá validá-lo
         pass
-
-
-oi = Funcionario("danilo","bruno","12345","2976346-0", "09821", "100000", "kkk")
-
-print(oi.checkRg())
-oi.checkFuncionario()

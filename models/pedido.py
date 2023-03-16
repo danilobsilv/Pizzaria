@@ -1,5 +1,5 @@
-from item import Item
-from cliente import Cliente
+from models.item import Item
+from models.cliente import Cliente
 
 class Pedido:
       def __init__(self, client:object, data):

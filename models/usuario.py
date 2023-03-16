@@ -1,20 +1,16 @@
-from invalid import Invalid
+from models.invalid import Invalid
 import re
 
 
 class Usuario:
     
-    def __init__(self, name:str, surname:str,  password:str, rg:str):
+    def __init__(self, name:str,  password:str, rg:str):
         self.name = name
-        self.surname = surname
         self.password = password
         self.rg = rg
 
     def getName(self):
         return self.name
-    
-    def getSurname(self):
-        return self.surname
     
     def getPassword(self):
         return self.password

@@ -1,34 +1,43 @@
 import json
-from utils.cliente import Cliente
-
+from models.cliente import Cliente
+from models.invalid import Invalid
+import jsons
 
 class Serializer:
       def __init__(self):
-            # self.file_name = file_name
+            # self.file_name_client = "mps_pizzaria\jsons\clients.json"
+            # self.file_name_functionary = "mps_pizzaria\jsons\osfuncionarios.json"
             # self.counter = 1
             pass
             
 
       def serializeClient(self, client:object):
-            file = "clients.json"
+            
             data = {}
-            with open(file, "r") as outfile:
-                  # try:
-                  data = json.load(outfile)
-                  # except:
-                        
-                        # raise f"error --> {Exception}" 
+            with open("mps_pizzaria\jsons\clients.json", "r") as outfile:
+                  try:
+                        data = json.load(outfile)
+                  except:
+                        raise Invalid("ERRO")
+                         
 
-                  dictionary = {"first name":client.first_name, "surname":client.surname,  "password":client.password}
+                  dictionary = {"name":client.name, "password":client.password, "rg":client.rg, "phone number":client.phone_number, "gender":client.gender}
                   data[client.id] = dictionary
                   
-                  with open(self.file_name, "w") as outfile:
+                  with open("mps_pizzaria\jsons\clients.json", "w") as outfile:
                         json.dump(data, outfile, indent=4)             
 
+      def serializeFunctionary(self, functionary:object):
+            data = {}
+            with open("mps_pizzaria\jsons\osfuncionarios.json", "r") as outfile:
+                  try:
+                        data = json.load(outfile)
+                  except:
+                        raise Invalid("ERRO")
+                  
+                  dictionary = {"name": functionary.name, "password":functionary.password, "rg":functionary.rg, "salary":functionary.salary, "hiring date": functionary.hiring_date}
+                  data[functionary.id] = dictionary
 
-if __name__ == "__main__":
-      serial = Serializer()
-      cliente = Cliente("danilo","bruno", "1234","423879","123","1233213","male")
-      serial.serializeClient(cliente)
-
-      # print(type(cliente))
+                  with open("mps_pizzaria\jsons\osfuncionarios.json", "w") as outfile:
+                        json.dump(data, outfile, indent=4)
+                        

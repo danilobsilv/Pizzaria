@@ -1,12 +1,13 @@
-from usuario import Usuario
+from models.usuario import Usuario
+from random import randint
 
-class Cliente(Usuario):
-    def __init__(self, first_name, surname, password, rg, id:str, phone_number:str, gender:str):
-        super().__init__(first_name, surname, password, rg)
-        self.id = id
+class Cliente(Usuario):  #phone number, gender
+    
+    def __init__(self, name: str, password: str, rg: str, phone_number:str, gender:str):
+        super().__init__(name, password, rg)
+        self.id = randint(100,999)
         self.phone_number = phone_number
         self.gender = gender
-
 
     def getId(self):
         return self.id
