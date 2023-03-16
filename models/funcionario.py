@@ -26,3 +26,5 @@ class Funcionario(Usuario): #id, salary, float, hiring_date
     
     def checkFuncionario(self):  # esse método vai validar se um funcionário existe ou não, irá validá-lo
         pass
+
+    
