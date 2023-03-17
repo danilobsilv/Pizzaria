@@ -1,1 +1,16 @@
-{}
+{
+    "funcionario 1": {
+        "name": "funcionario 1",
+        "password": "123456789",
+        "rg": "819273",
+        "salary": 100.21,
+        "hiring date": "10/05/2050"
+    },
+    "funcionario 2": {
+        "name": "funcionario 2",
+        "password": "098080",
+        "rg": "09808098123",
+        "salary": 109.9,
+        "hiring date": "17/04/2025"
+    }
+}
