@@ -1,8 +1,9 @@
 class Item:
       
-      def __init__(self, product:str, price:float):
+      def __init__(self, product:str, price:float, amount:int):
             self.product = product
             self.price = price
+            self.amount = amount
 
       def getProduct(self):
             return self.product 
@@ -16,4 +17,9 @@ class Item:
       def setPrice(self, new_price):
             self.price = new_price
 
+      def getAmount(self):
+            return self.amount
       
+      def setAmount(self, new_amount):
+            self.amount = new_amount
+            

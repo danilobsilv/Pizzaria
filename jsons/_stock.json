@@ -1,0 +1,10 @@
+{
+    "Coca-cola": {
+        "price": 5.5,
+        "amount": 20
+    },
+    "Pizza calabresa": {
+        "price": 22.5,
+        "amount": 50
+    }
+}
