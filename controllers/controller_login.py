@@ -12,7 +12,6 @@ class LoginController:
                   data  = json.load(outfile)
                   # idf = functionary.getName()
             if functionary.getName() in data:
-                  print("está no json")
+                  return True
             else:
-                  print("n está no json")
-                  
+                  return False                  
