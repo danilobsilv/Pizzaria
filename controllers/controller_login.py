@@ -10,8 +10,8 @@ class LoginController:
       def validateFunctionary(self, functionary):
             with open(self.functionary_path, "r") as outfile:
                   data  = json.load(outfile)
-                  idf = functionary.getName()
-            if idf in data:
+                  # idf = functionary.getName()
+            if functionary.getName() in data:
                   print("está no json")
             else:
                   print("n está no json")
