@@ -22,7 +22,7 @@ class Serializer:
                          
 
                   dictionary = {"name":client.name, "password":client.password, "rg":client.rg, "phone number":client.phone_number, "gender":client.gender}
-                  data[client.id] = dictionary
+                  data[client.name] = dictionary
                   
                   with open(self.file_name_client, "w") as outfile:
                         json.dump(data, outfile, indent=4)             
@@ -37,7 +37,7 @@ class Serializer:
                         raise Invalid("ERRO")
                   
                   dictionary = {"name": functionary.name, "password":functionary.password, "rg":functionary.rg, "salary":functionary.salary, "hiring date": functionary.hiring_date}
-                  data[functionary.id] = dictionary
+                  data[functionary.name] = dictionary
 
                   with open(self.file_name_functionary, "w") as outfile:
                         json.dump(data, outfile, indent=4)
