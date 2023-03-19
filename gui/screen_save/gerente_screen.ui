@@ -53,7 +53,7 @@
      <property name="frameShadow">
       <enum>QFrame::Raised</enum>
      </property>
-     <widget class="QPushButton" name="pushButton">
+     <widget class="QPushButton" name="btn_abrir_fazer_pedido">
       <property name="geometry">
        <rect>
         <x>100</x>
@@ -100,7 +100,7 @@ QPushButton:hover{
      <property name="frameShadow">
       <enum>QFrame::Raised</enum>
      </property>
-     <widget class="QPushButton" name="pushButton_2">
+     <widget class="QPushButton" name="btn_abri_manter_funcionarios">
       <property name="geometry">
        <rect>
         <x>100</x>
@@ -147,7 +147,7 @@ QPushButton:hover{
      <property name="frameShadow">
       <enum>QFrame::Raised</enum>
      </property>
-     <widget class="QPushButton" name="pushButton_3">
+     <widget class="QPushButton" name="btn_abrir_manter_itens">
       <property name="geometry">
        <rect>
         <x>100</x>
