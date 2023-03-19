@@ -4,10 +4,11 @@ import re
 
 class Usuario:
     
-    def __init__(self, name:str,  password:str, rg:str):
+    def __init__(self, name:str,  password:str, rg:str, cargo:str):
         self.name = name
         self.password = password
         self.rg = rg
+        self.cargo = cargo
 
     def getName(self):
         return self.name
@@ -31,5 +32,11 @@ class Usuario:
                 return False
         except Exception:             
             raise Invalid(f"ERROR --> {Exception}")
+    
+    def getCargo(self):
+        return self.cargo
+    
+    def setCargo(self, new_cargo):
+        self.cargo = new_cargo
             
         
