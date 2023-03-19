@@ -9,6 +9,7 @@ class Serializer:
             self.file_name_functionary = "mps_pizzaria\jsons\_funcionary.json"
             self.file_name_item_menu = "mps_pizzaria\jsons\_itemMenu.json"
             self.file_name_stock = "mps_pizzaria\jsons\_stock.json"
+            self.file_name_gerente = "mps_pizzaria\jsons\gerente.json"
             
 
       def serializeClient(self, client:object):
@@ -36,12 +37,25 @@ class Serializer:
                   except:
                         raise Invalid("ERRO")
                   
-                  dictionary = {"name": functionary.name, "password":functionary.password, "rg":functionary.rg, "salary":functionary.salary, "hiring date": functionary.hiring_date}
+                  dictionary = {"name": functionary.name, "password":functionary.password,"cargo":functionary.cargo, "rg":functionary.rg, "salary":functionary.salary, "hiring date": functionary.hiring_date}
                   data[functionary.name] = dictionary
 
                   with open(self.file_name_functionary, "w") as outfile:
                         json.dump(data, outfile, indent=4)
-                        
+      
+      def serializerGerente(self, gerente):
+            data = {}
+            with open(self.file_name_gerente, "r") as outfile:
+                  try:
+                        data = json.load(outfile)
+                  except:
+                        raise Invalid("ERRO")
+                  
+                  dictionary = {"name": gerente.name, "password":gerente.password,"cargo":gerente.cargo, "rg":gerente.rg, "salary":gerente.salary, "hiring date": gerente.hiring_date}
+                  data[gerente.name] = dictionary
+
+                  with open(self.file_name_gerente, "w") as outfile:
+                        json.dump(data, outfile, indent=4)
 
       def serializeItem(self, item):
             data = {}
