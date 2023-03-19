@@ -3,7 +3,7 @@ from PySide2.QtGui import *
 from PySide2.QtWidgets import *
 
 
-class Ui_MainWindow(object):
+class Ui_FazerPedido(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
@@ -79,6 +79,7 @@ class Ui_MainWindow(object):
         self.pushButton.setFont(font)
         self.pushButton.setCursor(QCursor(Qt.PointingHandCursor))
         self.pushButton.setStyleSheet(u"background-color: rgb(255, 255, 255);")
+        self.pushButton.clicked.connect(self.abrir_tela_pedido_confirmado)
         self.frame_3 = QFrame(self.frame_2)
         self.frame_3.setObjectName(u"frame_3")
         self.frame_3.setGeometry(QRect(30, 0, 401, 51))
@@ -173,3 +174,10 @@ class Ui_MainWindow(object):
         self.botao_sabores_disponiveis.setText(QCoreApplication.translate("MainWindow", u"sabores dispon\u00edveis", None))
         self.botao_bebidas_disponiveis.setText(QCoreApplication.translate("MainWindow", u"bebidas dispon\u00edveis", None))
     # retranslateUi
+
+    def abrir_tela_pedido_confirmado(self):
+        from gui.pedido_confirmado_screen import Ui_MainWindow
+        self.janela = QMainWindow()
+        self.pedido_confirmado_screen = Ui_MainWindow()
+        self.pedido_confirmado_screen.setupUi(self.janela)
+        self.janela.show()
