@@ -19,9 +19,10 @@ class Ui_MainWindow(object):
         self.label = QLabel(self.frame)
         self.label.setObjectName(u"label")
         self.label.setGeometry(QRect(110, 40, 251, 251))
-        self.label.setPixmap(QPixmap(u"../../images/pedido_confirmado.png"))
+        self.label.setPixmap(QPixmap(u"mps_pizzaria\images\pedido_confirmado.png"))
         self.label.setScaledContents(True)
         self.pushButton = QPushButton(self.frame)
+        self.pushButton.clicked.connect(self.voltar_tela_fazer_pedido)
         self.pushButton.setObjectName(u"pushButton")
         self.pushButton.setGeometry(QRect(200, 310, 75, 23))
         self.pushButton.setCursor(QCursor(Qt.PointingHandCursor))
@@ -57,3 +58,11 @@ class Ui_MainWindow(object):
         self.label.setText("")
         self.pushButton.setText(QCoreApplication.translate("MainWindow", u"OK", None))
     # retranslateUi
+
+    def voltar_tela_fazer_pedido(self):
+        from gui.fazer_pedido_screen import Ui_FazerPedido
+        self.janela = QMainWindow()
+        self.tela_fazer_pedido = Ui_FazerPedido()
+        self.tela_fazer_pedido.setupUi(self.janela)
+        self.janela.show()
+    
