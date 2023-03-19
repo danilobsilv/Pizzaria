@@ -1,4 +1,3 @@
-import gui.login_screen 
 import json
 
 class LoginScreenController:
