@@ -3,8 +3,8 @@ from datetime import date
 from random import randint
 
 class Funcionario(Usuario): #id, salary, float, hiring_date
-    def __init__(self, name: str, password: str, rg: str, salary:float, hiring_date:date):
-        super().__init__(name, password, rg)
+    def __init__(self, name: str, password: str, rg: str, cargo, salary:float, hiring_date:date):
+        super().__init__(name, password, rg, cargo)
         self.id = randint(100,999)
         self.salary = salary
         self.hiring_date = hiring_date
