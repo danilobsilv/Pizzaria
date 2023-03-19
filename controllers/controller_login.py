@@ -1,17 +1,30 @@
+import gui.login_screen 
 import json
 
-class LoginController:
-    
-      def __init__(self):
-            # self.screen = screen
-            self.functionary_path = "mps_pizzaria\jsons\_funcionary.json"
+class LoginScreenController:
+      def __init__(self) -> None:
+            pass
 
+      def validateFunctionary(self, user_input):
+            with open("mps_pizzaria\jsons\_funcionary.json", "r") as outfile:
+                  try:
+                        data = json.load(outfile)
+                        if user_input in data:
+                              return True
+                        else:
+                              return False
+                  except:
+                        raise Exception("ERROR")
+                  
 
-      def validateFunctionary(self, functionary):
-            with open(self.functionary_path, "r") as outfile:
-                  data  = json.load(outfile)
-            if functionary.getName() in data:
-                  return True
-            else:
-                  return False
-                            
+      def validateGerente(self, user_input):
+            with open("mps_pizzaria\jsons\gerente.json", "r") as outfile:
+                  try:
+                        data = json.load(outfile)
+                        if user_input in data:
+                              return True
+                        else:
+                              return False
+                  except:
+                        raise Exception("ERROR")      
+            
