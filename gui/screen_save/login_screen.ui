@@ -114,6 +114,58 @@ QPushButton:hover{
       <string>ENTRAR</string>
      </property>
     </widget>
+    <widget class="QLabel" name="txt_aviso">
+     <property name="geometry">
+      <rect>
+       <x>60</x>
+       <y>100</y>
+       <width>311</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>12</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+    <widget class="QComboBox" name="combo_cargo">
+     <property name="geometry">
+      <rect>
+       <x>150</x>
+       <y>20</y>
+       <width>121</width>
+       <height>22</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>12</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(255, 255, 255);</string>
+     </property>
+     <property name="placeholderText">
+      <string/>
+     </property>
+     <item>
+      <property name="text">
+       <string>funcionário</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>gerente</string>
+      </property>
+     </item>
+    </widget>
    </widget>
    <widget class="QLabel" name="label">
     <property name="geometry">
