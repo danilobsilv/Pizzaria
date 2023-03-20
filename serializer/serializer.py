@@ -1,7 +1,6 @@
 import json
 from models.cliente import Cliente
 from models.invalid import Invalid
-import jsons
 
 class Serializer:
       def __init__(self):
