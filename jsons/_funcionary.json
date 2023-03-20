@@ -9,10 +9,26 @@
     },
     "bruno": {
         "name": "bruno",
-        "password": "9830918",
+        "password": "983",
         "cargo": "gerente",
         "rg": "8927492847",
         "salary": "12.9",
+        "hiring date": "01/01/2000"
+    },
+    "Eric Perin": {
+        "name": "Eric Perin",
+        "password": "12345",
+        "cargo": "funcion\u00e1rio",
+        "rg": "30810381",
+        "salary": "1200",
+        "hiring date": "19/03/2023"
+    },
+    "cadela gomes": {
+        "name": "cadela gomes",
+        "password": "2312312321",
+        "cargo": "gerente",
+        "rg": "12313123123",
+        "salary": "50.90",
         "hiring date": "01/01/2000"
     }
 }
