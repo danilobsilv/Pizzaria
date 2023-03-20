@@ -1,16 +1,18 @@
 {
-    "funcionario 1": {
-        "name": "funcionario 1",
-        "password": "123456789",
-        "rg": "819273",
-        "salary": 100.21,
-        "hiring date": "10/05/2050"
+    "danilo": {
+        "name": "danilo",
+        "password": "123",
+        "cargo": "gerente",
+        "rg": "13123123123",
+        "salary": "100.9",
+        "hiring date": "01/01/2000"
     },
-    "funcionario 2": {
-        "name": "funcionario 2",
-        "password": "098080",
-        "rg": "09808098123",
-        "salary": 109.9,
-        "hiring date": "17/04/2025"
+    "bruno": {
+        "name": "bruno",
+        "password": "9830918",
+        "cargo": "gerente",
+        "rg": "8927492847",
+        "salary": "12.9",
+        "hiring date": "01/01/2000"
     }
 }

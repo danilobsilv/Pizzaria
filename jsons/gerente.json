@@ -1,0 +1,10 @@
+{
+    "gerente": {
+        "name": "gerente",
+        "password": "123456789",
+        "cargo": "gerente",
+        "rg": "819273",
+        "salary": 100.21,
+        "hiring date": "10/05/2050"
+    }
+}
