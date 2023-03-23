@@ -1,9 +1,17 @@
 from PySide2.QtCore import *
 from PySide2.QtGui import *
 from PySide2.QtWidgets import *
+from controllers.controller_login_screen import LoginScreenController
+import json
 
-class Ui_MainWindow(object):
+
+class UI_LoginScreen(object):
+    def __init__(self) -> None:
+        self.txt_usuario = ""
+        self.txt_combo_cargo = ""
+
     def setupUi(self, MainWindow):
+        login_controller = LoginScreenController
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
         MainWindow.resize(621, 575)
@@ -90,14 +98,15 @@ class Ui_MainWindow(object):
     # retranslateUi  
             
     def AbrirJanelaFazerPedido(self):
-        from controllers.controller_login_screen import LoginScreenController
+        # from controllers.controller_login_screen import LoginScreenController
         from gui.fazer_pedido_screen import Ui_FazerPedido
-        from gui.gerente_screen import Ui_MainWindow
+        from gui.gerente_screen import UI_GerenteScreen
         
         user = self.txt_usuario.text()
         cargo = self.combo_cargo.currentText()
         # try:
         with open("mps_pizzaria\jsons\_funcionary.json", "r") as outfile:
+            json.load(outfile)
         # except:
             # return False
         
@@ -110,19 +119,18 @@ class Ui_MainWindow(object):
                     self.wind.setupUi(self.janela)
                     self.janela.show()
                 else:
-                    self.txt_aviso("Usuário Inválido!")
+                    # self.txt_aviso("Usuário Inválido!")
+                    pass
             
             elif cargo == "gerente": 
                 if controller.validateGerente(user):
                     self.janela = QMainWindow()
-                    self.wind = Ui_MainWindow()
+                    self.wind = UI_GerenteScreen()
                     self.wind.setupUi(self.janela)
                     self.janela.show()
                 else:
-                    self.txt_aviso.setText("Usuário Inválido!")
-            
-            else:
-                self.txt_aviso.setText("Usuário inválido!")
+                    # self.txt_aviso.setText("Usuário Inválido!")
+                    pass        
 
            
         
