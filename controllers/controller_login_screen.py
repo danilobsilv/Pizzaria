@@ -1,9 +1,12 @@
 import json
 
 class LoginScreenController():
-         
+      def __init__(self):
+            self.functionary_file_path = "mps_pizzaria\jsons\_funcionary.json"
+            self.gerente_file_path ="mps_pizzaria\jsons\gerente.json"
+            
       def validateFunctionary(self, user_input):
-            with open("mps_pizzaria\jsons\_funcionary.json", "r") as outfile:
+            with open(self.functionary_file_path, "r") as outfile:
                   try:
                         data = json.load(outfile)
                         if user_input in data:
@@ -15,7 +18,7 @@ class LoginScreenController():
                   
 
       def validateGerente(self, user_input):
-            with open("mps_pizzaria\jsons\gerente.json", "r") as outfile:
+            with open(self.gerente_file_path, "r") as outfile:
                   try:
                         data = json.load(outfile)
                         if user_input in data:
