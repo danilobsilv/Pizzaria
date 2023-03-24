@@ -104,33 +104,28 @@ class UI_LoginScreen(object):
         
         user = self.txt_usuario.text()
         cargo = self.combo_cargo.currentText()
-        # try:
-        with open("mps_pizzaria\jsons\_funcionary.json", "r") as outfile:
-            json.load(outfile)
-        # except:
-            # return False
+        try:
+            with open("mps_pizzaria\jsons\_funcionary.json", "r") as outfile:
+                json.load(outfile)
+        except:
+            raise Exception("Failed to load the JSON file")
         
         
-            controller = LoginScreenController()
-            if cargo == "funcionário":
-                if controller.validateFunctionary(user):
-                    self.janela = QMainWindow()
-                    self.wind = Ui_FazerPedido()
-                    self.wind.setupUi(self.janela)
-                    self.janela.show()
-                else:
-                    # self.txt_aviso("Usuário Inválido!")
-                    pass
-            
-            elif cargo == "gerente": 
-                if controller.validateGerente(user):
-                    self.janela = QMainWindow()
-                    self.wind = UI_GerenteScreen()
-                    self.wind.setupUi(self.janela)
-                    self.janela.show()
-                else:
-                    # self.txt_aviso.setText("Usuário Inválido!")
-                    pass        
-
-           
-        
+        controller = LoginScreenController()
+        if cargo == "funcionário":
+            if controller.validateFunctionary(user):
+                self.janela = QMainWindow()
+                self.wind = Ui_FazerPedido()
+                self.wind.setupUi(self.janela)
+                self.janela.show()
+            else:
+                self.txt_aviso("Usuário Inválido!")
+                
+        elif cargo == "gerente": 
+            if controller.validateGerente(user):
+                self.janela = QMainWindow()
+                self.wind = UI_GerenteScreen()
+                self.wind.setupUi(self.janela)
+                self.janela.show()
+            else:
+                self.txt_aviso.setText("Usuário Inválido!")
