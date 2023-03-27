@@ -9,6 +9,7 @@ class Serializer:
             self.file_name_item_menu = "mps_pizzaria\jsons\_itemMenu.json"
             self.file_name_stock = "mps_pizzaria\jsons\_stock.json"
             self.file_name_gerente = "mps_pizzaria\jsons\gerente.json"
+            self.file_name_pedido = "mps_pizzaria\jsons\_pedido.json"
             
 
       def serializeClient(self, client:object):
@@ -69,4 +70,18 @@ class Serializer:
 
                   with open(self.file_name_stock, "w") as outfile:
                         json.dump(data, outfile, indent=4)
-            
+
+      def serializePedido(self, pedido):
+            data = {}
+            with open(self.file_name_pedido, "r") as outfile:
+                  try:
+                        data = json.load(outfile)
+                  except:
+                        raise Invalid("Failed to deserialize")
+
+                  dictionary = {"itens":pedido.items_list, "cliente":pedido.cliente, "valor":pedido.valor, "data":pedido.data} 
+                  data[pedido.id] = dictionary
+
+                  with open(self.file_name_pedido, "w") as outfile:
+                        json.dump(data, outfile, indent=4)
+                             
