@@ -1,3 +1,13 @@
+# -*- coding: utf-8 -*-
+
+################################################################################
+## Form generated from reading UI file 'fazer_pedido_screenRqAXMW.ui'
+##
+## Created by: Qt User Interface Compiler version 5.15.2
+##
+## WARNING! All changes made in this file will be lost when recompiling UI file!
+################################################################################
+
 from PySide2.QtCore import *
 from PySide2.QtGui import *
 from PySide2.QtWidgets import *
@@ -23,20 +33,6 @@ class Ui_FazerPedido(object):
         self.layout_vertical_listapizzas.setObjectName(u"layout_vertical_listapizzas")
         self.layout_vertical_listapizzas.setContentsMargins(0, 0, 0, 0)
         self.lista_pizzas = QListWidget(self.verticalLayoutWidget)
-        font = QFont()
-        font.setPointSize(12)
-        __qlistwidgetitem = QListWidgetItem(self.lista_pizzas)
-        __qlistwidgetitem.setFont(font);
-        __qlistwidgetitem1 = QListWidgetItem(self.lista_pizzas)
-        __qlistwidgetitem1.setFont(font);
-        __qlistwidgetitem2 = QListWidgetItem(self.lista_pizzas)
-        __qlistwidgetitem2.setFont(font);
-        __qlistwidgetitem3 = QListWidgetItem(self.lista_pizzas)
-        __qlistwidgetitem3.setFont(font);
-        __qlistwidgetitem4 = QListWidgetItem(self.lista_pizzas)
-        __qlistwidgetitem4.setFont(font);
-        __qlistwidgetitem5 = QListWidgetItem(self.lista_pizzas)
-        __qlistwidgetitem5.setFont(font);
         self.lista_pizzas.setObjectName(u"lista_pizzas")
         self.lista_pizzas.setStyleSheet(u"background-color: rgb(255, 255, 255);")
 
@@ -48,25 +44,11 @@ class Ui_FazerPedido(object):
         self.horizontalLayout = QHBoxLayout(self.horizontalLayoutWidget)
         self.horizontalLayout.setObjectName(u"horizontalLayout")
         self.horizontalLayout.setContentsMargins(0, 0, 0, 0)
-        self.listWidget = QListWidget(self.horizontalLayoutWidget)
-        __qlistwidgetitem6 = QListWidgetItem(self.listWidget)
-        __qlistwidgetitem6.setFont(font);
-        __qlistwidgetitem7 = QListWidgetItem(self.listWidget)
-        __qlistwidgetitem7.setFont(font);
-        __qlistwidgetitem8 = QListWidgetItem(self.listWidget)
-        __qlistwidgetitem8.setFont(font);
-        __qlistwidgetitem9 = QListWidgetItem(self.listWidget)
-        __qlistwidgetitem9.setFont(font);
-        __qlistwidgetitem10 = QListWidgetItem(self.listWidget)
-        __qlistwidgetitem10.setFont(font);
-        __qlistwidgetitem11 = QListWidgetItem(self.listWidget)
-        __qlistwidgetitem11.setFont(font);
-        __qlistwidgetitem12 = QListWidgetItem(self.listWidget)
-        __qlistwidgetitem12.setFont(font);
-        self.listWidget.setObjectName(u"listWidget")
-        self.listWidget.setStyleSheet(u"background-color: rgb(255, 255, 255);")
+        self.listaBebidas = QListWidget(self.horizontalLayoutWidget)
+        self.listaBebidas.setObjectName(u"listaBebidas")
+        self.listaBebidas.setStyleSheet(u"background-color: rgb(255, 255, 255);")
 
-        self.horizontalLayout.addWidget(self.listWidget)
+        self.horizontalLayout.addWidget(self.listaBebidas)
 
         self.frame_2 = QFrame(self.frame)
         self.frame_2.setObjectName(u"frame_2")
@@ -76,10 +58,11 @@ class Ui_FazerPedido(object):
         self.pushButton = QPushButton(self.frame_2)
         self.pushButton.setObjectName(u"pushButton")
         self.pushButton.setGeometry(QRect(140, 140, 141, 23))
+        font = QFont()
+        font.setPointSize(12)
         self.pushButton.setFont(font)
         self.pushButton.setCursor(QCursor(Qt.PointingHandCursor))
         self.pushButton.setStyleSheet(u"background-color: rgb(255, 255, 255);")
-        self.pushButton.clicked.connect(self.abrir_tela_pedido_confirmado)
         self.frame_3 = QFrame(self.frame_2)
         self.frame_3.setObjectName(u"frame_3")
         self.frame_3.setGeometry(QRect(30, 0, 401, 51))
@@ -132,48 +115,14 @@ class Ui_FazerPedido(object):
 
     def retranslateUi(self, MainWindow):
         MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"MainWindow", None))
-
-        __sortingEnabled = self.lista_pizzas.isSortingEnabled()
-        self.lista_pizzas.setSortingEnabled(False)
-        ___qlistwidgetitem = self.lista_pizzas.item(0)
-        ___qlistwidgetitem.setText(QCoreApplication.translate("MainWindow", u"Pizza de Calabresa", None));
-        ___qlistwidgetitem1 = self.lista_pizzas.item(1)
-        ___qlistwidgetitem1.setText(QCoreApplication.translate("MainWindow", u"Pizza de Peperone", None));
-        ___qlistwidgetitem2 = self.lista_pizzas.item(2)
-        ___qlistwidgetitem2.setText(QCoreApplication.translate("MainWindow", u"Pizza de Mussarela", None));
-        ___qlistwidgetitem3 = self.lista_pizzas.item(3)
-        ___qlistwidgetitem3.setText(QCoreApplication.translate("MainWindow", u"Pizza de Portuguesa", None));
-        ___qlistwidgetitem4 = self.lista_pizzas.item(4)
-        ___qlistwidgetitem4.setText(QCoreApplication.translate("MainWindow", u"Pizza de Chocolate", None));
-        ___qlistwidgetitem5 = self.lista_pizzas.item(5)
-        ___qlistwidgetitem5.setText(QCoreApplication.translate("MainWindow", u"Pizza de Morango", None));
-        self.lista_pizzas.setSortingEnabled(__sortingEnabled)
-
-
-        __sortingEnabled1 = self.listWidget.isSortingEnabled()
-        self.listWidget.setSortingEnabled(False)
-        ___qlistwidgetitem6 = self.listWidget.item(0)
-        ___qlistwidgetitem6.setText(QCoreApplication.translate("MainWindow", u"Coca-Cola", None));
-        ___qlistwidgetitem7 = self.listWidget.item(1)
-        ___qlistwidgetitem7.setText(QCoreApplication.translate("MainWindow", u"Pepsi", None));
-        ___qlistwidgetitem8 = self.listWidget.item(2)
-        ___qlistwidgetitem8.setText(QCoreApplication.translate("MainWindow", u"Guaran\u00e1 Ant\u00e1rtica", None));
-        ___qlistwidgetitem9 = self.listWidget.item(3)
-        ___qlistwidgetitem9.setText(QCoreApplication.translate("MainWindow", u"Suco de Laranja", None));
-        ___qlistwidgetitem10 = self.listWidget.item(4)
-        ___qlistwidgetitem10.setText(QCoreApplication.translate("MainWindow", u"Suco de Cupua\u00e7u", None));
-        ___qlistwidgetitem11 = self.listWidget.item(5)
-        ___qlistwidgetitem11.setText(QCoreApplication.translate("MainWindow", u"Suco de Maracuj\u00e1", None));
-        ___qlistwidgetitem12 = self.listWidget.item(6)
-        ___qlistwidgetitem12.setText(QCoreApplication.translate("MainWindow", u"Suco de Ma\u00e7\u00e3", None));
-        self.listWidget.setSortingEnabled(__sortingEnabled1)
-
-        self.pushButton.setText(QCoreApplication.translate("MainWindow", u"cadastrar pedido", None))
+        self.pushButton.setText(QCoreApplication.translate("MainWindow", u"confirmar pedido", None))
         self.label.setText("")
         self.label_2.setText("")
         self.botao_sabores_disponiveis.setText(QCoreApplication.translate("MainWindow", u"sabores dispon\u00edveis", None))
         self.botao_bebidas_disponiveis.setText(QCoreApplication.translate("MainWindow", u"bebidas dispon\u00edveis", None))
     # retranslateUi
+
+
 
     def abrir_tela_pedido_confirmado(self):
         from gui.pedido_confirmado_screen import Ui_MainWindow

@@ -2,6 +2,8 @@ from PySide2.QtCore import *
 from PySide2.QtGui import *
 from PySide2.QtWidgets import *
 from controllers.controller_login_screen import LoginScreenController
+from gui.fazer_pedido_screen import Ui_FazerPedido
+from gui.gerente_screen import UI_GerenteScreen
 import json
 
 
@@ -98,12 +100,9 @@ class UI_LoginScreen(object):
     # retranslateUi  
             
     def AbrirJanelaFazerPedido(self):
-        # from controllers.controller_login_screen import LoginScreenController
-        from gui.fazer_pedido_screen import Ui_FazerPedido
-        from gui.gerente_screen import UI_GerenteScreen
-        
         user = self.txt_usuario.text()
         cargo = self.combo_cargo.currentText()
+
         try:
             with open("mps_pizzaria\jsons\_funcionary.json", "r") as outfile:
                 json.load(outfile)
@@ -118,9 +117,6 @@ class UI_LoginScreen(object):
                 self.wind = Ui_FazerPedido()
                 self.wind.setupUi(self.janela)
                 self.janela.show()
-            else:
-                self.txt_aviso("Usuário Inválido!")
-                
         elif cargo == "gerente": 
             if controller.validateGerente(user):
                 self.janela = QMainWindow()
