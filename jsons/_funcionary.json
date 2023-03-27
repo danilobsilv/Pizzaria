@@ -23,12 +23,28 @@
         "salary": "1200",
         "hiring date": "19/03/2023"
     },
-    "cadela gomes": {
-        "name": "cadela gomes",
+    "gomes": {
+        "name": "gomes",
         "password": "2312312321",
         "cargo": "gerente",
         "rg": "12313123123",
         "salary": "50.90",
+        "hiring date": "01/01/2000"
+    },
+    "oioioi": {
+        "name": "oioioi",
+        "password": "12345",
+        "cargo": "funcionario",
+        "rg": "11231231231312",
+        "salary": "99.00",
+        "hiring date": "01/01/2000"
+    },
+    "teste111111111": {
+        "name": "teste111111111",
+        "password": "11111111",
+        "cargo": "gerente",
+        "rg": "1111111111",
+        "salary": "11111.99",
         "hiring date": "01/01/2000"
     }
 }

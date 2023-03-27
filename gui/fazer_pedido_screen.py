@@ -1,17 +1,9 @@
-# -*- coding: utf-8 -*-
-
-################################################################################
-## Form generated from reading UI file 'fazer_pedido_screenRqAXMW.ui'
-##
-## Created by: Qt User Interface Compiler version 5.15.2
-##
-## WARNING! All changes made in this file will be lost when recompiling UI file!
-################################################################################
-
 from PySide2.QtCore import *
 from PySide2.QtGui import *
 from PySide2.QtWidgets import *
-
+from gui.pedido_confirmado_screen import UI_PedidoConfirmadoScreen
+from controllers.controller_fazer_pedido_screen import FazerPedidoScreenController
+import json
 
 class Ui_FazerPedido(object):
     def setupUi(self, MainWindow):
@@ -35,7 +27,7 @@ class Ui_FazerPedido(object):
         self.lista_pizzas = QListWidget(self.verticalLayoutWidget)
         self.lista_pizzas.setObjectName(u"lista_pizzas")
         self.lista_pizzas.setStyleSheet(u"background-color: rgb(255, 255, 255);")
-
+        self.lista_pizzas.addItem
         self.layout_vertical_listapizzas.addWidget(self.lista_pizzas)
 
         self.horizontalLayoutWidget = QWidget(self.frame)
@@ -111,6 +103,11 @@ class Ui_FazerPedido(object):
         self.retranslateUi(MainWindow)
 
         QMetaObject.connectSlotsByName(MainWindow)
+        with open("mps_pizzaria\jsons\_stock.json","r") as outfile:
+            data = json.load(outfile)
+            for elem in data:
+                self.lista_pizzas.addItem(elem)
+
     # setupUi
 
     def retranslateUi(self, MainWindow):
@@ -122,11 +119,9 @@ class Ui_FazerPedido(object):
         self.botao_bebidas_disponiveis.setText(QCoreApplication.translate("MainWindow", u"bebidas dispon\u00edveis", None))
     # retranslateUi
 
-
-
     def abrir_tela_pedido_confirmado(self):
-        from gui.pedido_confirmado_screen import Ui_MainWindow
+
         self.janela = QMainWindow()
-        self.pedido_confirmado_screen = Ui_MainWindow()
+        self.pedido_confirmado_screen = UI_PedidoConfirmadoScreen()
         self.pedido_confirmado_screen.setupUi(self.janela)
         self.janela.show()

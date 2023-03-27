@@ -10,7 +10,8 @@ class Serializer:
             self.file_name_stock = "mps_pizzaria\jsons\_stock.json"
             self.file_name_gerente = "mps_pizzaria\jsons\gerente.json"
             self.file_name_pedido = "mps_pizzaria\jsons\_pedido.json"
-            
+            self.file_name_pizza = "mps_pizzaria\jsons\_pizza.json"
+            self.file_name_bebida = "mps_pizzaria\jsons\_bebidas.json"
 
       def serializeClient(self, client:object):
             
@@ -57,19 +58,19 @@ class Serializer:
                   with open(self.file_name_gerente, "w") as outfile:
                         json.dump(data, outfile, indent=4)
 
-      def serializeItem(self, item):
-            data = {}
-            with open(self.file_name_stock, "r") as outfile:
-                  try:
-                        data = json.load(outfile)
-                  except:
-                        raise Invalid("ERRO")
+      # def serializeItem(self, item):
+      #       data = {}
+      #       with open(self.file_name_stock, "r") as outfile:
+      #             try:
+      #                   data = json.load(outfile)
+      #             except:
+      #                   raise Invalid("ERRO")
                   
-                  dictionary = {"price": item.price, "amount": item.amount}
-                  data[item.product] = dictionary
+      #             dictionary = {"price": item.price, "amount": item.amount}
+      #             data[item.product] = dictionary
 
-                  with open(self.file_name_stock, "w") as outfile:
-                        json.dump(data, outfile, indent=4)
+      #             with open(self.file_name_stock, "w") as outfile:
+      #                   json.dump(data, outfile, indent=4)
 
       def serializePedido(self, pedido):
             data = {}
@@ -85,3 +86,32 @@ class Serializer:
                   with open(self.file_name_pedido, "w") as outfile:
                         json.dump(data, outfile, indent=4)
                              
+
+      def serializeSabor(self, pizza):
+            data = {}
+            with open(self.file_name_pizza, "r") as outfile:
+                  try:
+                        data = json.load(outfile)
+                  except:
+                        raise Invalid("ERRO")
+                  
+                  dictionary = {"price": pizza.price, "amount": pizza.amount}
+                  data[pizza.product] = dictionary
+
+                  with open(self.file_name_pizza, "w") as outfile:
+                        json.dump(data, outfile, indent=4)      
+      
+      
+      def serializeBebida(self, bebida):
+            data = {}
+            with open(self.file_name_bebida_, "r") as outfile:
+                  try:
+                        data = json.load(outfile)
+                  except:
+                        raise Invalid("ERRO")
+                  
+                  dictionary = {"price": bebida.price, "amount": bebida.amount}
+                  data[bebida.product] = dictionary
+
+                  with open(self.file_name_bebida, "w") as outfile:
+                        json.dump(data, outfile, indent=4) 

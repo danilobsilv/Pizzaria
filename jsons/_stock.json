@@ -1,10 +1,10 @@
 {
-    "Coca-cola": {
-        "price": 5.5,
-        "amount": 20
-    },
-    "Pizza calabresa": {
+    "calabresa": {
         "price": 22.5,
-        "amount": 50
+        "amount": 10
+    },
+    "coca-cola": {
+        "price": 10,
+        "amount": 15
     }
 }

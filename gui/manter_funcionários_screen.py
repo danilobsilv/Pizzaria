@@ -1,10 +1,10 @@
 from PySide2.QtCore import *
 from PySide2.QtGui import *
 from PySide2.QtWidgets import *
+from controllers.controller_manter_funcionarios_screen import ManterFuncionariosController
+import json
 
-
-
-class Ui_MainWindow(object):
+class Ui_ManterFuncionariosScreen(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
@@ -165,6 +165,11 @@ class Ui_MainWindow(object):
         self.retranslateUi(MainWindow)
 
         QMetaObject.connectSlotsByName(MainWindow)
+         
+        with open("mps_pizzaria\jsons\_funcionary.json", "r") as outfile:
+            data = json.load(outfile)
+            for elem in data:
+                self.listWidget.addItem(elem)
     # setupUi
 
     def retranslateUi(self, MainWindow):
@@ -188,6 +193,7 @@ class Ui_MainWindow(object):
 
 
     def cadastrarFuncionario(self):
+        pass
         from serializer.serializer import Serializer
         from models.funcionario import Funcionario
         
@@ -206,23 +212,42 @@ class Ui_MainWindow(object):
         self.label_usuario_cadastrado.setText("funcionário cadastrado")
 
     def excluirFuncionario(self):  # último método faltando
-        pass
+        listItems = self.listWidget.selectedItems()
+        if not listItems: return
+        
+        for item in listItems:
+            self.listWidget.takeItem(self.listWidget.row(item))
+
+
+        with open("mps_pizzaria\jsons\_funcionary.json", "r") as outfile:
+            data = json.load(outfile)
+
+        if listItems in data:
+            del data[listItems]
+
+        with open("mps_pizzaria\jsons\_funcionary.json", "w") as outfile:
+            json.dump(data, outfile)
+
+
+
+
 
     # def showListWidgetFuncionarios(self):
-        # try:
-        #     with open("mps_pizzaria\jsons\_funcionary.json", "r") as outfile:
-        #         data = json.load(outfile)
-        #         for elem in data:
-        #             self.listWidget.addItem(elem)
+    #     try:
+    #         with open("mps_pizzaria\jsons\_funcionary.json", "r") as outfile:
+    #             data = json.load(outfile)
+    #             for elem in data.get():
+    #                 self.listWidget.addItem(elem)
 
-        # except:
-        #     raise Exception("ERROR")
+    #     except:
+    #         raise Exception("ERROR")
+
 
 
     def voltarScreenGerente(self):
-        from gui.gerente_screen import Ui_MainWindow
+        from gui.gerente_screen import UI_GerenteScreen
         self.janela = QMainWindow()
-        self.window = Ui_MainWindow()
+        self.window = UI_GerenteScreen()
         self.window.setupUi(self.janela)
         self.janela.show()
 

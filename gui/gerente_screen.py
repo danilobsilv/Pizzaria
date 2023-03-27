@@ -119,9 +119,9 @@ class UI_GerenteScreen(object):
         self.janela1.show()
 
     def abrirManterFuncionariosScreen(self):
-        from gui.manter_funcionários_screen import Ui_MainWindow
+        from gui.manter_funcionários_screen import Ui_ManterFuncionariosScreen
         self.janela2 = QMainWindow()
-        self.window2 = Ui_MainWindow()
+        self.window2 = Ui_ManterFuncionariosScreen()
         self.window2.setupUi(self.janela2)
         self.janela2.show()
 
