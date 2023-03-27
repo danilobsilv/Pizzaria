@@ -60,10 +60,10 @@ class Ui_FazerPedido(object):
         self.frame_3.setGeometry(QRect(30, 0, 401, 51))
         self.frame_3.setFrameShape(QFrame.StyledPanel)
         self.frame_3.setFrameShadow(QFrame.Raised)
-        self.label = QLabel(self.frame_3)
-        self.label.setObjectName(u"label")
-        self.label.setGeometry(QRect(0, 20, 191, 20))
-        self.label.setStyleSheet(u"background-color: rgb(255, 255, 255);")
+        self.pizza_escolhida = QLabel(self.frame_3)
+        self.pizza_escolhida.setObjectName(u"pizza_escolhida")
+        self.pizza_escolhida.setGeometry(QRect(0, 20, 191, 20))
+        self.pizza_escolhida.setStyleSheet(u"background-color: rgb(255, 255, 255);")
         self.spinBox_1 = QSpinBox(self.frame_3)
         self.spinBox_1.setObjectName(u"spinBox_1")
         self.spinBox_1.setGeometry(QRect(260, 20, 42, 22))
@@ -73,14 +73,20 @@ class Ui_FazerPedido(object):
         self.frame_4.setGeometry(QRect(20, 60, 411, 31))
         self.frame_4.setFrameShape(QFrame.StyledPanel)
         self.frame_4.setFrameShadow(QFrame.Raised)
-        self.label_2 = QLabel(self.frame_4)
-        self.label_2.setObjectName(u"label_2")
-        self.label_2.setGeometry(QRect(10, 10, 191, 16))
-        self.label_2.setStyleSheet(u"background-color: rgb(255, 255, 255);")
+        self.bebida_escolhida = QLabel(self.frame_4)
+        self.bebida_escolhida.setObjectName(u"bebida_escolhida")
+        self.bebida_escolhida.setGeometry(QRect(10, 10, 191, 16))
+        self.bebida_escolhida.setStyleSheet(u"background-color: rgb(255, 255, 255);")
         self.spinBox_2 = QSpinBox(self.frame_4)
         self.spinBox_2.setObjectName(u"spinBox_2")
         self.spinBox_2.setGeometry(QRect(270, 10, 42, 22))
         self.spinBox_2.setStyleSheet(u"background-color: rgb(255, 255, 255);")
+        self.ok_button = QPushButton(self.frame_2)
+        self.ok_button.setObjectName(u"ok_button")
+        self.ok_button.setGeometry(QRect(210, 100, 31, 23))
+        self.ok_button.setCursor(QCursor(Qt.PointingHandCursor))
+        self.ok_button.setStyleSheet(u"background-color: rgb(255, 255, 255);")
+        self.ok_button.clicked.connect(self.setPedidoOnLabel)
         self.botao_sabores_disponiveis = QPushButton(self.centralwidget)
         self.botao_sabores_disponiveis.setObjectName(u"botao_sabores_disponiveis")
         self.botao_sabores_disponiveis.setGeometry(QRect(50, 40, 171, 23))
@@ -103,18 +109,23 @@ class Ui_FazerPedido(object):
         self.retranslateUi(MainWindow)
 
         QMetaObject.connectSlotsByName(MainWindow)
-        with open("mps_pizzaria\jsons\_stock.json","r") as outfile:
+        with open("mps_pizzaria\jsons\_pizza.json","r") as outfile:
             data = json.load(outfile)
             for elem in data:
                 self.lista_pizzas.addItem(elem)
+        with open("mps_pizzaria\jsons\_bebidas.json","r") as outfile:
+            data = json.load(outfile)
+            for elem in data:
+                self.listaBebidas.addItem(elem)
 
     # setupUi
 
     def retranslateUi(self, MainWindow):
         MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"MainWindow", None))
         self.pushButton.setText(QCoreApplication.translate("MainWindow", u"confirmar pedido", None))
-        self.label.setText("")
-        self.label_2.setText("")
+        self.pizza_escolhida.setText("")
+        self.bebida_escolhida.setText("")
+        self.ok_button.setText(QCoreApplication.translate("MainWindow", u"OK", None))
         self.botao_sabores_disponiveis.setText(QCoreApplication.translate("MainWindow", u"sabores dispon\u00edveis", None))
         self.botao_bebidas_disponiveis.setText(QCoreApplication.translate("MainWindow", u"bebidas dispon\u00edveis", None))
     # retranslateUi
@@ -125,3 +136,12 @@ class Ui_FazerPedido(object):
         self.pedido_confirmado_screen = UI_PedidoConfirmadoScreen()
         self.pedido_confirmado_screen.setupUi(self.janela)
         self.janela.show()
+
+    def setPedidoOnLabel(self):
+        pizza = self.lista_pizzas.currentItem().text()
+        bebida = self.listaBebidas.currentItem().text()
+
+        self.pizza_escolhida.setText(pizza)
+        self.bebida_escolhida.setText(bebida)
+
+        

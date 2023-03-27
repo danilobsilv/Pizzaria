@@ -1,7 +1,7 @@
 from PySide2.QtCore import *
 from PySide2.QtGui import *
 from PySide2.QtWidgets import *
-
+import json
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
@@ -48,6 +48,7 @@ class Ui_MainWindow(object):
         self.pushButton.setObjectName(u"pushButton")
         self.pushButton.setGeometry(QRect(100, 280, 111, 23))
         self.pushButton.setFont(font1)
+        self.pushButton.clicked.connect(self.cadastrarItem)
         self.pushButton.setStyleSheet(u"QPushButton{\n"
 "\n"
 "	background-color: rgb(0,0,0);\n"
@@ -73,6 +74,11 @@ class Ui_MainWindow(object):
         self.frame_4.setStyleSheet(u"background-color: rgb(0, 0, 0);")
         self.frame_4.setFrameShape(QFrame.StyledPanel)
         self.frame_4.setFrameShadow(QFrame.Raised)
+        self.label_3 = QLabel(self.frame)
+        self.label_3.setObjectName(u"label_3")
+        self.label_3.setGeometry(QRect(70, 220, 141, 20))
+        self.label_3.setFont(font1)
+        self.label_3.setAlignment(Qt.AlignCenter)
         self.frame_2 = QFrame(self.centralwidget)
         self.frame_2.setObjectName(u"frame_2")
         self.frame_2.setGeometry(QRect(310, 0, 201, 461))
@@ -93,6 +99,7 @@ class Ui_MainWindow(object):
         self.pushButton_2.setGeometry(QRect(60, 280, 101, 23))
         self.pushButton_2.setFont(font1)
         self.pushButton_2.setCursor(QCursor(Qt.PointingHandCursor))
+        self.pushButton_2.clicked.connect(self.excluirItem)
         self.pushButton_2.setStyleSheet(u"QPushButton{\n"
 "\n"
 "	background-color: rgb(0,0,0);\n"
@@ -146,6 +153,10 @@ class Ui_MainWindow(object):
         self.retranslateUi(MainWindow)
 
         QMetaObject.connectSlotsByName(MainWindow)
+        with open("mps_pizzaria\jsons\_stock.json", "r") as outfile:
+            data = json.load(outfile)
+            for elem in data:
+                self.listWidget.addItem(elem)
     # setupUi
 
     def retranslateUi(self, MainWindow):
@@ -154,8 +165,42 @@ class Ui_MainWindow(object):
         self.lineEdit.setText(QCoreApplication.translate("MainWindow", u"Produto", None))
         self.lineEdit_2.setText(QCoreApplication.translate("MainWindow", u"Pre\u00e7o", None))
         self.pushButton.setText(QCoreApplication.translate("MainWindow", u"Cadastrar Item", None))
+        self.label_3.setText("")
         self.label_2.setText(QCoreApplication.translate("MainWindow", u"Itens", None))
         self.pushButton_2.setText(QCoreApplication.translate("MainWindow", u"Excluir Item", None))
         self.pushButton_3.setText(QCoreApplication.translate("MainWindow", u"OK", None))
     # retranslateUi
 
+
+    def cadastrarItem(self):
+        from serializer.serializer import Serializer
+        from models.item import Item
+
+        preco = self.lineEdit_2.text()
+        produto = self.lineEdit.text()
+        quantidade = self.spinBox.value()
+
+        serializer = Serializer()
+        new_item = Item(produto, preco, quantidade)
+        
+        if produto == "pizza":
+            serializer.serializeSabor(new_item)
+            serializer.serializeItem(new_item)
+        elif produto == "bebida":
+            serializer.serializeBebida(new_item)
+            serializer.serializeItem(new_item)
+
+        self.label_3.setText("Item cadastrado!")
+
+
+    def excluirItem(self):
+        listItem = self.listWidget.selectedItems()
+
+        if not listItem:
+            return
+        
+        for item in listItem:
+            self.listWidget.takeItem(self.listWidget.row(item))
+
+        if listItem == "pizza":
+            pass

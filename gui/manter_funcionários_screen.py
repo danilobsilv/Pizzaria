@@ -192,8 +192,7 @@ class Ui_ManterFuncionariosScreen(object):
     # retranslateUi
 
 
-    def cadastrarFuncionario(self):
-        pass
+    def cadastrarFuncionario(self): 
         from serializer.serializer import Serializer
         from models.funcionario import Funcionario
         
