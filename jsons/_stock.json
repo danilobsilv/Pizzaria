@@ -1,10 +1,10 @@
 {
     "pizza": {
-        "price": "12.50",
+        "price": 12.50,
         "amount": 5
     },
-    "bebida": {
-        "price": "5.0",
-        "amount": 10
+    "pizza qualquer":{
+        "price": 30.00,
+        "amount": 20
     }
-}
+} 

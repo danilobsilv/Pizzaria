@@ -2,10 +2,10 @@ from PySide2.QtCore import *
 from PySide2.QtGui import *
 from PySide2.QtWidgets import *
 from controllers.controller_manter_funcionarios_screen import ManterFuncionariosController
-import json
 
 class Ui_ManterFuncionariosScreen(object):
     def setupUi(self, MainWindow):
+        controller = ManterFuncionariosController()
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
         MainWindow.resize(533, 600)
@@ -33,7 +33,7 @@ class Ui_ManterFuncionariosScreen(object):
         self.pushButton.setObjectName(u"pushButton")
         self.pushButton.setGeometry(QRect(40, 340, 111, 23))
         self.pushButton.setCursor(QCursor(Qt.PointingHandCursor))
-        self.pushButton.clicked.connect(self.excluirFuncionario)
+        self.pushButton.clicked.connect(controller.excluirFuncionario)
         self.pushButton.setStyleSheet(u"QPushButton{\n"
 "\n"
 "	background-color: rgb(0,0,0);\n"
@@ -99,7 +99,7 @@ class Ui_ManterFuncionariosScreen(object):
         self.pushButton_2.setObjectName(u"pushButton_2")
         self.pushButton_2.setGeometry(QRect(130, 340, 75, 23))
         self.pushButton_2.setCursor(QCursor(Qt.PointingHandCursor))
-        self.pushButton_2.clicked.connect(self.cadastrarFuncionario)
+        self.pushButton_2.clicked.connect(controller.cadastrarFuncionario)
         self.pushButton_2.setStyleSheet(u"QPushButton{\n"
 "\n"
 "	background-color: rgb(0,0,0);\n"
@@ -139,7 +139,7 @@ class Ui_ManterFuncionariosScreen(object):
         self.pushButton_3.setObjectName(u"pushButton_3")
         self.pushButton_3.setGeometry(QRect(220, 480, 75, 23))
         self.pushButton_3.setCursor(QCursor(Qt.PointingHandCursor))
-        self.pushButton_3.clicked.connect(self.voltarScreenGerente)
+        self.pushButton_3.clicked.connect(controller.voltarScreenGerente)
         self.pushButton_3.setStyleSheet(u"QPushButton{\n"
 "\n"
 "	background-color: rgb(0,0,0);\n"
@@ -165,11 +165,7 @@ class Ui_ManterFuncionariosScreen(object):
         self.retranslateUi(MainWindow)
 
         QMetaObject.connectSlotsByName(MainWindow)
-         
-        with open("mps_pizzaria\jsons\_funcionary.json", "r") as outfile:
-            data = json.load(outfile)
-            for elem in data:
-                self.listWidget.addItem(elem)
+        controller.showListWidgetFuncionarios()
     # setupUi
 
     def retranslateUi(self, MainWindow):
@@ -190,63 +186,3 @@ class Ui_ManterFuncionariosScreen(object):
         self.label_usuario_cadastrado.setText("")
         self.pushButton_3.setText(QCoreApplication.translate("MainWindow", u"OK", None))
     # retranslateUi
-
-
-    def cadastrarFuncionario(self): 
-        from serializer.serializer import Serializer
-        from models.funcionario import Funcionario
-        
-        nome = self.lineEdit.text()
-        password = self.lineEdit_2.text()
-        rg = self.lineEdit_3.text()
-        cargo = self.lineEdit_5.text()
-        salary = self.lineEdit_4.text()
-        hiring_date = self.dateEdit.text()
-
-        
-        serializer = Serializer()
-        new_funcionario = Funcionario(nome, password, rg, cargo, salary, hiring_date)
-        serializer.serializeFunctionary(new_funcionario)
-        
-        self.label_usuario_cadastrado.setText("funcionário cadastrado")
-
-    def excluirFuncionario(self):  # último método faltando
-        listItems = self.listWidget.selectedItems()
-        if not listItems: return
-        
-        for item in listItems:
-            self.listWidget.takeItem(self.listWidget.row(item))
-
-
-        with open("mps_pizzaria\jsons\_funcionary.json", "r") as outfile:
-            data = json.load(outfile)
-
-        if listItems in data:
-            del data[listItems]
-
-        with open("mps_pizzaria\jsons\_funcionary.json", "w") as outfile:
-            json.dump(data, outfile)
-
-
-
-
-
-    # def showListWidgetFuncionarios(self):
-    #     try:
-    #         with open("mps_pizzaria\jsons\_funcionary.json", "r") as outfile:
-    #             data = json.load(outfile)
-    #             for elem in data.get():
-    #                 self.listWidget.addItem(elem)
-
-    #     except:
-    #         raise Exception("ERROR")
-
-
-
-    def voltarScreenGerente(self):
-        from gui.gerente_screen import UI_GerenteScreen
-        self.janela = QMainWindow()
-        self.window = UI_GerenteScreen()
-        self.window.setupUi(self.janela)
-        self.janela.show()
-

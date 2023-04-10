@@ -2,9 +2,6 @@ from PySide2.QtCore import *
 from PySide2.QtGui import *
 from PySide2.QtWidgets import *
 from controllers.controller_login_screen import LoginScreenController
-from gui.fazer_pedido_screen import Ui_FazerPedido
-from gui.gerente_screen import UI_GerenteScreen
-import json
 
 
 class UI_LoginScreen(object):
@@ -41,7 +38,7 @@ class UI_LoginScreen(object):
         self.txt_senha.setEchoMode(QLineEdit.Password)
         self.txt_senha.setAlignment(Qt.AlignCenter)
         self.btn_entrar = QPushButton(self.frame)
-        self.btn_entrar.clicked.connect(self.AbrirJanelaFazerPedido)
+        self.btn_entrar.clicked.connect(login_controller.AbrirProxJan)
         self.btn_entrar.setObjectName(u"btn_entrar")
         self.btn_entrar.setGeometry(QRect(170, 220, 75, 23))
         self.btn_entrar.setCursor(QCursor(Qt.PointingHandCursor))
@@ -99,29 +96,3 @@ class UI_LoginScreen(object):
         self.label.setText("")
     # retranslateUi  
             
-    def AbrirJanelaFazerPedido(self):
-        user = self.txt_usuario.text()
-        cargo = self.combo_cargo.currentText()
-
-        try:
-            with open("mps_pizzaria\jsons\_funcionary.json", "r") as outfile:
-                json.load(outfile)
-        except:
-            raise Exception("Failed to load the JSON file")
-        
-        
-        controller = LoginScreenController()
-        if cargo == "funcionário":
-            if controller.validateFunctionary(user):
-                self.janela = QMainWindow()
-                self.wind = Ui_FazerPedido()
-                self.wind.setupUi(self.janela)
-                self.janela.show()
-        elif cargo == "gerente": 
-            if controller.validateGerente(user):
-                self.janela = QMainWindow()
-                self.wind = UI_GerenteScreen()
-                self.wind.setupUi(self.janela)
-                self.janela.show()
-            else:
-                self.txt_aviso.setText("Usuário Inválido!")

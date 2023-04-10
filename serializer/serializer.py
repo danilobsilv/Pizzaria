@@ -80,7 +80,7 @@ class Serializer:
                   except:
                         raise Invalid("Failed to deserialize")
 
-                  dictionary = {"itens":pedido.items_list, "cliente":pedido.cliente, "valor":pedido.valor, "data":pedido.data} 
+                  dictionary = {"itens":pedido.items_list, "cliente":pedido.client, "valor":pedido.value, "data":pedido.data} 
                   data[pedido.id] = dictionary
 
                   with open(self.file_name_pedido, "w") as outfile:
@@ -115,3 +115,5 @@ class Serializer:
 
                   with open(self.file_name_bebida, "w") as outfile:
                         json.dump(data, outfile, indent=4) 
+
+      

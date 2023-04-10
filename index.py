@@ -8,5 +8,4 @@ if __name__ == '__main__':
     ui = UI_LoginScreen()
     ui.setupUi(mainWindow)
     mainWindow.show()
-    sys.exit(app.exec_())   
-
+    sys.exit(app.exec_())

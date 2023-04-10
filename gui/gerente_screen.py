@@ -1,10 +1,11 @@
 from PySide2.QtCore import *
 from PySide2.QtGui import *
 from PySide2.QtWidgets import *
-
+from controllers.controller_gerente_screen import gerenteScreenController
 
 class UI_GerenteScreen(object):
     def setupUi(self, MainWindow):
+        controller = gerenteScreenController()
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
         MainWindow.resize(637, 600)
@@ -30,7 +31,7 @@ class UI_GerenteScreen(object):
         self.btn_abrir_fazer_pedido.setObjectName(u"btn_abrir_fazer_pedido")
         self.btn_abrir_fazer_pedido.setGeometry(QRect(100, 30, 111, 23))
         self.btn_abrir_fazer_pedido.setCursor(QCursor(Qt.PointingHandCursor))
-        self.btn_abrir_fazer_pedido.clicked.connect(self.abrirFazerPedidoScreen)
+        self.btn_abrir_fazer_pedido.clicked.connect(controller.abrirFazerPedidoScreen)
         self.btn_abrir_fazer_pedido.setStyleSheet(u"QPushButton{\n"
 "\n"
 "	background-color: rgb(0,0,0);\n"
@@ -53,7 +54,7 @@ class UI_GerenteScreen(object):
         self.btn_abri_manter_funcionarios.setObjectName(u"btn_abri_manter_funcionarios")
         self.btn_abri_manter_funcionarios.setGeometry(QRect(100, 30, 111, 23))
         self.btn_abri_manter_funcionarios.setCursor(QCursor(Qt.PointingHandCursor))
-        self.btn_abri_manter_funcionarios.clicked.connect(self.abrirManterFuncionariosScreen)
+        self.btn_abri_manter_funcionarios.clicked.connect(controller.abrirManterFuncionariosScreen)
         self.btn_abri_manter_funcionarios.setStyleSheet(u"QPushButton{\n"
 "\n"
 "	background-color: rgb(0,0,0);\n"
@@ -76,7 +77,7 @@ class UI_GerenteScreen(object):
         self.btn_abrir_manter_itens.setObjectName(u"btn_abrir_manter_itens")
         self.btn_abrir_manter_itens.setGeometry(QRect(100, 30, 111, 23))
         self.btn_abrir_manter_itens.setCursor(QCursor(Qt.PointingHandCursor))
-        self.btn_abrir_manter_itens.clicked.connect(self.abrirManterItensScreen)
+        self.btn_abrir_manter_itens.clicked.connect(controller.abrirManterItensScreen)
         self.btn_abrir_manter_itens.setStyleSheet(u"QPushButton{\n"
 "\n"
 "	background-color: rgb(0,0,0);\n"
@@ -110,24 +111,3 @@ class UI_GerenteScreen(object):
         self.btn_abri_manter_funcionarios.setText(QCoreApplication.translate("MainWindow", u"Manter funcion\u00e1ros", None))
         self.btn_abrir_manter_itens.setText(QCoreApplication.translate("MainWindow", u"Manter Itens", None))
     # retranslateUi
-
-    def abrirFazerPedidoScreen(self):
-        from gui.fazer_pedido_screen import Ui_FazerPedido
-        self.janela1 = QMainWindow()
-        self.window1 = Ui_FazerPedido()
-        self.window1.setupUi(self.janela1)
-        self.janela1.show()
-
-    def abrirManterFuncionariosScreen(self):
-        from gui.manter_funcionários_screen import Ui_ManterFuncionariosScreen
-        self.janela2 = QMainWindow()
-        self.window2 = Ui_ManterFuncionariosScreen()
-        self.window2.setupUi(self.janela2)
-        self.janela2.show()
-
-    def abrirManterItensScreen(self):
-        from gui.manter_itens_screen import Ui_MainWindow
-        self.janela3 = QMainWindow()
-        self.window3 = Ui_MainWindow()
-        self.window3.setupUi(self.janela3)
-        self.janela3.show()

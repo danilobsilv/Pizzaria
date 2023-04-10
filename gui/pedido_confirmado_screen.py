@@ -1,10 +1,12 @@
 from PySide2.QtCore import *
 from PySide2.QtGui import *
 from PySide2.QtWidgets import *
+from controllers.controller_pedido_confirmado import PedidoConfirmadoController
 
 
 class UI_PedidoConfirmadoScreen(object):
     def setupUi(self, MainWindow):
+        controller = PedidoConfirmadoController()
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
         MainWindow.resize(518, 417)
@@ -22,7 +24,7 @@ class UI_PedidoConfirmadoScreen(object):
         self.label.setPixmap(QPixmap(u"mps_pizzaria\images\pedido_confirmado.png"))
         self.label.setScaledContents(True)
         self.pushButton = QPushButton(self.frame)
-        self.pushButton.clicked.connect(self.voltar_tela_fazer_pedido)
+        self.pushButton.clicked.connect(controller.voltarTelaFazerPedido)
         self.pushButton.setObjectName(u"pushButton")
         self.pushButton.setGeometry(QRect(200, 310, 75, 23))
         self.pushButton.setCursor(QCursor(Qt.PointingHandCursor))
@@ -59,10 +61,4 @@ class UI_PedidoConfirmadoScreen(object):
         self.pushButton.setText(QCoreApplication.translate("MainWindow", u"OK", None))
     # retranslateUi
 
-    def voltar_tela_fazer_pedido(self):
-        from gui.fazer_pedido_screen import Ui_FazerPedido
-        self.janela = QMainWindow()
-        self.tela_fazer_pedido = Ui_FazerPedido()
-        self.tela_fazer_pedido.setupUi(self.janela)
-        self.janela.show()
     

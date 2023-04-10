@@ -1,4 +1,3 @@
-from models.invalid import Invalid
 import re
 
 

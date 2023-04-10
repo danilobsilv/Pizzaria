@@ -199,6 +199,25 @@
        </property>
       </widget>
      </widget>
+     <widget class="QPushButton" name="ok_button">
+      <property name="geometry">
+       <rect>
+        <x>210</x>
+        <y>100</y>
+        <width>31</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <property name="cursor">
+       <cursorShape>PointingHandCursor</cursorShape>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(255, 255, 255);</string>
+      </property>
+      <property name="text">
+       <string>OK</string>
+      </property>
+     </widget>
     </widget>
    </widget>
    <widget class="QPushButton" name="botao_sabores_disponiveis">
