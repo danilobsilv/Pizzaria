@@ -24,10 +24,8 @@ class Usuario:
     def checkRg(self):
         check = re.match("^\d{1,8}([A-Z]|[a-z]{1})?-?\d{1,6}$", self.rg)
 
-        if check: 
-            return True
-        else: 
-            return False
+        if check: return True
+        else: return False
     
     def getCargo(self):
         return self.cargo
